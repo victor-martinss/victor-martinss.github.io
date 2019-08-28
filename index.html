@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Camisas</title>
+    <style>
+        *{margin: 0;padding: 0;box-sizing: border-box;}
+
+        .fundo{background-color: #28928b;height: 100vh;padding-top: 10vh;transition: background-color 0.4s;position: relative;z-index: 1;mix-blend-mode: multiply;}
+        .wrap{width: 80vw;height: 80vh;border: 10px solid #fff;margin: 0 auto;font-weight: bold;font-family: Arial;display: flex;flex-direction: column;justify-content: space-between;}
+
+        .header{display: flex;justify-content: space-between;}
+        .logo{font-size: 28px;color: #ffffff;margin: 16px;}
+        .menu{margin: 16px;color: #fff;font-size: 24px;}
+
+        .content{display: flex;justify-content: space-between;}
+
+        .side-left{display: flex;flex-direction: column;justify-content: space-between;}
+
+        .list-color{margin: 48px;font-size: 80px;color: #fff;}
+        .item-color:hover{color: transparent;-webkit-text-stroke: 1px #fff;cursor: pointer;}
+
+        .button{width: 200px;line-height: 60px;background-color: rgba(0, 0, 0, 0.5);color: #fff;text-align: center;margin: 0 48px;font-size: 20px;border-radius: 8px;transition: color 0.5s, background-color 0.5s;}
+        .button:hover{color: rgba(0, 0, 0, 0.5); background-color: #fff;}
+
+        .sizes{background-color: #fff;display: flex;margin-top: 24px;}
+        .size-item{padding: 24px;}
+
+        .side-right{margin-right: 48px;}
+        .circle-bg{width: 500px;height: 500px;background-color: rgba(0, 0, 0, 0.5);border-radius: 100%;position: relative;padding-top: 20px;}
+        .circle-price{background-color: #fff;width: 100px;line-height: 100px;text-align: center;border-radius: 100%;position: absolute;left: 10px;top: 10px;}
+        .t-shirt{width: 450px;height: 450px;background-image: url('img/green.png');background-size: contain;background-repeat: no-repeat;background-position: center;margin: 0 auto;}
+
+        .fundo-red{background-color: #912938;}
+        .fundo-red .t-shirt{background-image: url('img/red.png');}
+
+        .fundo-purple{background-color: #8e2667;}
+        .fundo-purple .t-shirt{background-image: url('img/purple.png');}
+
+        .fundo-blue{background-color: #28598c;}
+        .fundo-blue .t-shirt{background-image: url('img/blue.png');}
+        
+        .cloud{position: absolute;bottom: 0;left: 0;width: 100vw;height: 100vh;background-image: url('img/nuvem-bg.jpg');background-size: auto 100vh;animation: bg-cloud 40s linear 0s infinite;}
+
+        @keyframes bg-cloud {
+            0%{
+                background-position: 0 0;
+            }
+            100% {
+                background-position: -1927px 0;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .side-right{display: none;}
+            .sizes{display: none;}
+            .list-color{margin: 0 10px;}
+            .content{padding-bottom: 42px;}
+        }
+    </style>
+</head>
+<body>
+    <div class="cloud"></div>
+    <div class="fundo">
+        <div class="wrap">
+            <div class="header">
+                <div class="logo">MARTINS</div>
+                <div class="menu">☰</div>
+            </div>
+            <div class="content">
+                <div class="side-left">
+                    <div class="list-color">
+                        <div class="item-color" data-color="fundo-green">Green</div>
+                        <div class="item-color" data-color="fundo-red">Red</div>
+                        <div class="item-color" data-color="fundo-purple">Purple</div>
+                        <div class="item-color" data-color="fundo-blue">Blue</div>
+                    </div>
+                    <div class="button">Comprar</div>
+                    <div class="sizes">
+                        <div class="size-item">36</div>
+                        <div class="size-item">37</div>
+                        <div class="size-item">38</div>
+                        <div class="size-item">39</div>
+                        <div class="size-item">40</div>
+                        <div class="size-item">41</div>
+                    </div>
+                </div>
+                <div class="side-right">
+                    <div class="circle-bg">
+                        <div class="circle-price">R$ 299,90</div>
+                        <div class="t-shirt"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.querySelectorAll('.item-color').forEach(function(item) {
+            item.addEventListener('click', function() {
+                document.querySelector('.fundo').classList.remove('fundo-green', 'fundo-red', 'fundo-purple', 'fundo-blue');
+                document.querySelector('.fundo').classList.add(item.getAttribute('data-color'));
+                console.log(item.getAttribute('data-color'));
+            })
+        });
+    </script>
+</body>
+</html>
